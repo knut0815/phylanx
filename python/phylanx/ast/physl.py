@@ -522,6 +522,9 @@ class PhySL:
 
     def _apply_rule(self, node):
         """Calls the corresponding rule, based on the name of the node."""
+        if isinstance(node, int):
+            return str(node)
+
         if node is not None:
             node_name = node.__class__.__name__
             return eval('self._%s' % node_name)(node)
